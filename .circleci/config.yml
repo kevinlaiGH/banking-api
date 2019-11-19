@@ -5,4 +5,12 @@ jobs:
       - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
-      - run: npm install
+      - run: cd -
+      - run: zip -r banking-api.zip banking-api
+      - run: chmod 400 banking-api.pem
+      - run: scp -i banking-api.pem banking-api.zip ec2-user@54.221.22.212:/home/ec2-user
+      - run: ssh -i banking-api.pem ec2-user@54.221.22.212
+      - run: unzip banking-api.zip
+      - run: cd banking-api
+      - run: npm i
+      - run: npm start
