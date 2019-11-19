@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
-      - run: cd -
+      - run: cd ..
       - run: zip -r banking-api.zip banking-api
       - run: chmod 400 banking-api.pem
       - run: scp -i banking-api.pem banking-api.zip ec2-user@54.221.22.212:/home/ec2-user
