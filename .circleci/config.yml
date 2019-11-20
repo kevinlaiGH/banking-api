@@ -11,7 +11,7 @@ jobs:
 
   deploy-job:
     docker:
-      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
+      - image: circleci/node:4.8.2 # the primary container
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -21,7 +21,7 @@ jobs:
           command: |
             ssh -i banking-api.pem ec2-user@54.221.22.212
 
-      - run: scp -i banking-api.pem banking-api.zip ec2-user@54.221.22.212:/home/ec2-user
+      - run: scp -i banking-api-3.pem banking-api.zip ec2-user@54.221.22.212:/home/ec2-user
 #      - run: ssh -i banking-api.pem ec2-user@54.221.22.212
       - run: unzip banking-api.zip
       - run: cd banking-api
