@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Deploy over SSH
           command: |
-            ssh -i banking-api.pem ec2-user@54.221.22.212
+            ssh -i banking-api-3.pem ec2-user@54.221.22.212
 
       - run: scp -i banking-api-3.pem banking-api.zip ec2-user@54.221.22.212:/home/ec2-user
 #      - run: ssh -i banking-api.pem ec2-user@54.221.22.212
