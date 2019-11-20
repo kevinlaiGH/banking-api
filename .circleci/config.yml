@@ -16,6 +16,11 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "02:c3:28:23:ba:97:f0:dd:d4:3a:55:9f:d3:cf:c4:03"
+      - run:
+          name: Deploy over SSH
+          command: |
+            ssh ec2-user@54.221.22.212 "<remote deploy command>"
+
       - run: scp -i banking-api.pem banking-api.zip ec2-user@54.221.22.212:/home/ec2-user
       - run: ssh -i banking-api.pem ec2-user@54.221.22.212
       - run: unzip banking-api.zip
@@ -31,8 +36,6 @@ workflows:
     jobs:
       - build
       - deploy-job
-          requires:
-            build
 
 
 
