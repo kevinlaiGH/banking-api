@@ -35,7 +35,7 @@ jobs:
       - run:
           # https://serverfault.com/questions/934072/how-to-view-ecdsa-host-key-of-a-server
           name: Get/Write Host ID
-          command: ssh-keyscan $SSH_HOST >> .ssh/known_hosts
+          command: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
 
       - run:
           name: Deploy over SSH
