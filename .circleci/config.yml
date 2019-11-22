@@ -21,7 +21,7 @@ jobs:
             - "02:c3:28:23:ba:97:f0:dd:d4:3a:55:9f:d3:cf:c4:03"
       - run:
           name: Show Directory
-          command: pwd && ls
+          command: ls
       - run:
           name: Deploy over SSH
           command: |
@@ -32,16 +32,11 @@ jobs:
       - run: npm i
       - run: npm start
 
-
 workflows:
   version: 2.1
-
   my_workflow:
     jobs:
       - build
       - deploy-job
-
-
-
-
-
+          requires:
+          - build
