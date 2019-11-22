@@ -37,6 +37,6 @@ workflows:
   my_workflow:
     jobs:
       - build
-      - deploy-job
+      - deploy-job:
           requires:
           - build
