@@ -22,6 +22,7 @@ jobs:
     docker:
       - image: circleci/node:4.8.2 # the primary container
     steps:
+      # https://circleci.com/docs/2.0/configuration-reference/#attach_workspace
       - attach_workspace:
           at: ./
       - add_ssh_keys:
@@ -33,7 +34,7 @@ jobs:
       - run:
           name: Deploy over SSH
           command: |
-            scp banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
+            scp -v banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
 
       - run: unzip banking-api.zip
       - run: cd banking-api
