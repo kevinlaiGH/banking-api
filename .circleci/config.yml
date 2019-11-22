@@ -22,6 +22,8 @@ jobs:
     docker:
       - image: circleci/node:4.8.2 # the primary container
     steps:
+      - attach_workspace:
+          at: ./
       - add_ssh_keys:
           fingerprints:
             - "02:c3:28:23:ba:97:f0:dd:d4:3a:55:9f:d3:cf:c4:03"
