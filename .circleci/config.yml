@@ -41,11 +41,12 @@ jobs:
           name: Deploy over SSH
           command: |
             scp -v banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
+      # ssh into EC2 instance and then unzip
+      - run:
+          name: Deploy over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST "unzip -o banking-api.zip && cd banking-api && npm i && npm start"
 
-      - run: unzip -o banking-api.zip
-      - run: cd banking-api
-      - run: npm i
-      - run: npm start
 
 workflows:
   version: 2.1
