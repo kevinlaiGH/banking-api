@@ -32,6 +32,10 @@ jobs:
           name: Show Directory
           command: ls
       - run:
+          name: Get/Write Host ID
+          command:  ssh-keyscan -t rsa,ecdsa,ed25519 -H $SSH_HOST 2>/dev/null >> .ssh/known_hosts
+
+      - run:
           name: Deploy over SSH
           command: |
             scp -v banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
