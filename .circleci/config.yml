@@ -20,6 +20,9 @@ jobs:
           fingerprints:
             - "02:c3:28:23:ba:97:f0:dd:d4:3a:55:9f:d3:cf:c4:03"
       - run:
+          name: Show Directory
+          command: pwd && ls
+      - run:
           name: Deploy over SSH
           command: |
             scp banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
