@@ -22,7 +22,7 @@ jobs:
     docker:
       - image: circleci/node:4.8.2 # the primary container
     steps:
-      - checkout # check out the code in the project directory
+#      - checkout # check out the code in the project directory
       # https://circleci.com/docs/2.0/configuration-reference/#attach_workspace
       - attach_workspace:
           at: ./
@@ -42,7 +42,7 @@ jobs:
           command: |
             scp -v banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
 
-      - run: unzip banking-api.zip
+      - run: unzip -o banking-api.zip
       - run: cd banking-api
       - run: npm i
       - run: npm start
