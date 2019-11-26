@@ -1,4 +1,6 @@
 #!/bin/bash
+# remove previous banking-api version
+rm -rf banking-api
 unzip -o banking-api.zip
 cd banking-api
 npm i
