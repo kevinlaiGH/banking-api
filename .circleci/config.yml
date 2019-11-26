@@ -41,11 +41,12 @@ jobs:
           name: Deploy over SSH
           command: |
             scp -v banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
+            scp -v deploy.sh $SSH_USER@$SSH_HOST:/home/$SSH_USER
       # ssh into EC2 instance and then unzip
       - run:
           name: Deploy over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "unzip -o banking-api.zip && cd banking-api && npm i && sudo npm install forever -g && forever start -a index.js"
+            ssh $SSH_USER@$SSH_HOST "sh deploy.sh"
       ## figure out how to start the server as daemon and stop && restart the server (you can use a library
 
 
