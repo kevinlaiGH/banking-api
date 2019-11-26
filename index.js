@@ -8,6 +8,6 @@ const port = 3000
 
 app.use(placesRoutes)
 
-// app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('Hello World forever!'))
 
 app.listen(port, () => console.log(`Banking app listening on port ${port}!`))
