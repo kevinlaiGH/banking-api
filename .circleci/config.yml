@@ -1,7 +1,6 @@
 version: 2.1
 jobs:
   build:
-
     docker:
       - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
     steps:
@@ -17,6 +16,7 @@ jobs:
           root: ./
           paths:
             - banking-api.zip
+            - deploy.sh
 
   deploy-job:
     docker:
@@ -40,8 +40,8 @@ jobs:
       - run:
           name: Deploy over SSH
           command: |
-            scp -v banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
-            scp -v deploy.sh $SSH_USER@$SSH_HOST:/home/$SSH_USER
+            scp banking-api.zip $SSH_USER@$SSH_HOST:/home/$SSH_USER
+            scp deploy.sh $SSH_USER@$SSH_HOST:/home/$SSH_USER
       # ssh into EC2 instance and then unzip
       - run:
           name: Deploy over SSH
