@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Deploy over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "unzip -o banking-api.zip && cd banking-api && npm i && npm install forever -g && forever start -a index.js"
+            ssh $SSH_USER@$SSH_HOST "unzip -o banking-api.zip && cd banking-api && npm i && sudo npm install forever -g"
       ## figure out how to start the server as daemon and stop && restart the server (you can use a library
 
 
