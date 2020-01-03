@@ -1,13 +1,13 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+const express = require('express');
+const routes = require('./routes/users');
 
-const placesRoutes = require('./routes/places-routes')
+const app =  express();
+const port = 3000;
 
-const app = express()
-const port = 3000
+app.use(express.json());
+app.use('/api', routes);
+app.listen(port, function(req, res){
+    console.log("Hello!");
+});
 
-app.use(placesRoutes)
-
-app.get('/', (req, res) => res.send('Hello World forever!'))
-
-app.listen(port, () => console.log(`Banking app listening on port ${port}!`))
+module.exports = app;
