@@ -25,10 +25,9 @@ describe('POST /', function () {
             .expect(200, done)
             .expect(function (res)
             {
-                res.body.name = 'Kevin Lai'
+                res.body.name = "Kevin Lai"
                 res.body.password = "password123456"
             })
-
     });
 });
 

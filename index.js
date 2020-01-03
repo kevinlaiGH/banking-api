@@ -1,11 +1,14 @@
 const express = require('express');
-const routes = require('./routes/users');
+const users = require('./routes/users');
+const login = require('./routes/login');
 
 const app =  express();
 const port = 3000;
 
 app.use(express.json());
-app.use('/api', routes);
+
+// Routes
+app.use('/api', users);
 app.listen(port, function(req, res){
     console.log("Hello!");
 });
