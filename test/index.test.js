@@ -11,3 +11,24 @@ describe('GET /', function () {
     });
 });
 
+describe('POST /', function () {
+    it('responds with /api/register', function(done) {
+        request(app)
+            .post('/api/register')
+            .send({
+                "name": "Kevin Lai",
+                "email": "kevin.km.lai@gmail.com",
+                "password": "password123456"
+            })
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200, done)
+            .expect(function (res)
+            {
+                res.body.name = 'Kevin Lai'
+                res.body.password = "password123456"
+            })
+
+    });
+});
+
