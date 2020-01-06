@@ -9,6 +9,13 @@ describe('GET /', function () {
             .expect('Content-Type', /json/)
             .expect(200, done);
     });
+    it('responds with /api/account/balance', function(done) {
+        request(app)
+            .get('/api/account/balance')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200, done);
+    });
 });
 
 describe('POST /', function () {
