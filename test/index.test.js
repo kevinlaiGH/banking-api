@@ -47,5 +47,23 @@ describe('POST /', function () {
                 res.body.password = "password123456"
             })
     });
+
+    it('responds with /api/logout', function(done) {
+        request(app)
+            .post('/api/logout')
+            .send({
+                "name": "Kevin Lai",
+                "email": "kevin.km.lai@gmail.com",
+                "password": "password123456"
+            })
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200, done)
+            .expect(function (res)
+            {
+                res.body.name = "Kevin Lai"
+                res.body.password = "password123456"
+            })
+    });
 });
 
