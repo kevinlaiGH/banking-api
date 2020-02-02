@@ -1,0 +1,8 @@
+{
+  "development": {
+    "MONGODB_URI": "mongodb://localhost:27017/BankingApi"
+},
+  "test": {
+      "MONGODB_URI": "mongodb://localhost:27017/BankingApiTest"
+  }
+}
