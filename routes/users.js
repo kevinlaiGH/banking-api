@@ -1,9 +1,11 @@
 const express = require('express');
+const User = require('../models/User');
 
 const router = express.Router();
 
-router.get('/', function (req,res,next){
-    res.json('All users sent');
+router.get('/', async function (req,res,next){
+    const users = await User.find({}).lean();
+    res.json(users);
 });
 
 router.post('/register', function (req,res){
