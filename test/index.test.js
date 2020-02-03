@@ -30,15 +30,14 @@ describe.only('GET /', function () {
         expect(savedUser._id).to.not.be.empty;
       });
 
-    it('responds with /api', () => {
-        request(app)
+    it('responds with /api', async() => {
+        const res = await request(app)
             .get('/api')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
-            .expect(200)
-            .then(res => {
-                expect(res.body).length(1);
-            });
+			.expect(200);
+		
+		expect(res.body).length(1);
     });
     it('responds with /api', function(done) {
         request(app)
